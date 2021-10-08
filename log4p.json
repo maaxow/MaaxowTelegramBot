@@ -51,7 +51,7 @@
         },
       	"KmManager": {
       		"level": "INFO"
-      		"handlers": ["km_info_file_handler", "main_info_file_handler"]
+      		"handlers": ["console", "km_info_file_handler", "main_info_file_handler"]
       	}
     },
     "root": {
