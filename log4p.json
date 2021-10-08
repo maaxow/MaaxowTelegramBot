@@ -1,0 +1,61 @@
+{
+    "version": 1,
+    "disable_existing_loggers": true,
+    "formatters": {
+        "simple": {
+            "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+        },
+        "detail": {
+            "format": "%(asctime)-15s %(levelname)-5s %(filename)s +%(lineno)d %(funcName)s [%(threadName)s]: %(message)s"
+        }
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "level": "INFO",
+            "formatter": "simple",
+            "stream": "ext://sys.stdout"
+        },
+        "main_info_file_handler": {
+          "class": "logging.handlers.RotatingFileHandler",
+          "level": "DEBUG",
+          "formatter": "detail",
+          "filename": "logs/main.log",
+          "maxBytes": 10485760,
+          "backupCount": 10,
+          "encoding": "utf8"
+        },
+        "km_info_file_handler": {
+            "class": "logging.handlers.RotatingFileHandler",
+            "level": "DEBUG",
+            "formatter": "detail",
+            "filename": "logs/km-info.log",
+            "maxBytes": 10485760,
+            "backupCount": 10,
+            "encoding": "utf8"
+        },
+        "main_error_file_handler": {
+            "class": "logging.handlers.RotatingFileHandler",
+            "level": "ERROR",
+            "formatter": "detail",
+            "filename": "logs/main-errors.log",
+            "maxBytes": 10485760,
+            "backupCount": 10,
+            "encoding": "utf8"
+        }
+    },
+    "loggers": {
+        "TelegramBot": {
+            "level": "INFO",
+            "handlers": ["console", "main_info_file_handler"]
+        },
+      	"KmManager": {
+      		"level": "INFO"
+      		"handlers": ["km_info_file_handler", "main_info_file_handler"]
+      	}
+    },
+    "root": {
+        "level": "INFO",
+        "handlers": ["console", "main_info_file_handler", "main_error_file_handler"]
+    }
+}
